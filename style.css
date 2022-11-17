@@ -1,0 +1,29 @@
+
+body {
+    font-family: "Arial", sans-serif;
+    background-color: black;
+}
+section {
+    text-align: center;
+    color: chartreuse;
+    font-size: 60px;
+    font-family: "Courier";
+    font-weight: lighter;
+}
+.game--container {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    width: 460px;
+    margin: 50px auto;
+    color: white;
+}
+.cell {
+    font-family: "Century Gothic", cursive;
+    width: 90px;
+    height: 90px;
+    box-shadow: 0 0 0 1px #333333;
+    border: 1px solid #333333;
+    cursor: pointer;
+    line-height: 100px;
+    font-size: 60px;
+}
