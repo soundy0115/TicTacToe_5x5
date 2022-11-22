@@ -18,18 +18,24 @@ var currentPlayerTurn = () => `${currentPlayer}'s turn`;
 statusDisplay.innerHTML = currentPlayerTurn();
 
 var winningConditions = [
-    [0, 1, 2, 3, 4],
-    [5, 6, 7, 8, 9],
-    [10, 11, 12, 13, 14],
-    [15, 16, 17, 18, 19],
-    [20, 21, 22, 23, 24],
-    [0, 5, 10, 15, 20],
-    [1, 6, 11, 16, 21],
-    [2, 7, 12, 17, 22],
-    [3, 8, 13, 18, 23],
-    [4, 9, 14, 19, 24],
-    [0, 6, 12, 18, 24],
-    [4, 8, 12, 16, 20]
+    [0, 1, 2, 3], [1, 2, 3, 4],
+    [5, 6, 7, 8],    [6, 7, 8, 9],
+    [10, 11, 12, 13], [11, 12, 13, 14],
+    [15, 16, 17, 18], [16, 17, 18, 19],
+    [20, 21, 22, 23],     [21, 22, 23, 24],
+
+    [0, 5, 10, 15], [5, 10, 15, 20],
+    [1, 6, 11, 16], [6, 11, 16, 21],
+    [2, 7, 12, 17], [7, 12, 17, 22],
+    [3, 8, 13, 18], [8, 13, 18, 23],
+    [4, 9, 14, 19], [9, 14, 19, 24],
+    
+    
+    [0, 6, 12, 18], [1, 7, 13, 19],
+    [5, 11, 17, 23], [6, 12, 18, 24],
+    
+    [3, 7, 11, 15], [4, 8, 12, 16],
+    [9, 13, 17, 21], [8, 12, 16, 20]
 ];
 
 function handleCellPlayed(clickedCell, clickedCellIndex) {
@@ -44,17 +50,16 @@ function handlePlayerChange() {
 
 function handleResultValidation() {
     let roundWon = false;
-    for (let i = 0; i <= 11; i++) {
+    for (let i = 0; i <= 27; i++) {
         const winCondition = winningConditions[i];
         let a = gameState[winCondition[0]];
         let b = gameState[winCondition[1]];
         let c = gameState[winCondition[2]];
         let d = gameState[winCondition[3]];
-        let e = gameState[winCondition[4]];
-        if (a === '' || b === '' || c === '' || d === '' || e === '') {
+        if (a === '' || b === '' || c === '' || d === '') {
             continue;
         }
-        if (a === b && b === c && c === d && d === e) {
+        if (a === b && b === c && c === d) {
             roundWon = true;
             break
         }
